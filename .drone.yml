@@ -1,0 +1,19 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: build
+    image: docker:18.09.7-dind
+    environment:
+      - DOCKER_HOST=tcp://docker:2375
+    settings:
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+
+    commands:
+      - docker info
+      - docker-compose build
+      - docker login --username=$PLUGIN_USERNAME --password=$PLUGIN_PASSWORD
+      - docker-compose push

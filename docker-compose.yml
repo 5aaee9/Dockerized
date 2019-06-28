@@ -1,0 +1,6 @@
+version: '3'
+
+services:
+  mumble:
+    image: indexyz/mumble
+    build: ./dockerfiles/mumble
