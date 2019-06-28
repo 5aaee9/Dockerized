@@ -3,9 +3,8 @@ name: default
 
 steps:
   - name: build
-    image: docker:18.09.7-dind
-    environment:
-      - DOCKER_HOST=tcp://docker:2375
+    image: docker:18.06-dind
+
     settings:
       username:
         from_secret: docker_username
@@ -13,6 +12,7 @@ steps:
         from_secret: docker_password
 
     commands:
+      - dockerd --data-root /var/lib/docker
       - docker info
       - docker-compose build
       - docker login --username=$PLUGIN_USERNAME --password=$PLUGIN_PASSWORD
