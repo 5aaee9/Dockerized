@@ -8,3 +8,7 @@ services:
   ossutils:
     image: indexyz/ossutils
     build: ./dockerfiles/ossutils
+
+  telegram-send:
+    image: indexyz/telegram-send
+    build: ./dockerfiles/telegram-send
