@@ -4,3 +4,7 @@ services:
   mumble:
     image: indexyz/mumble
     build: ./dockerfiles/mumble
+
+  ossutils:
+    image: indexyz/ossutils
+    build: ./dockerfiles/ossutils
