@@ -12,3 +12,7 @@ services:
   telegram-send:
     image: indexyz/telegram-send
     build: ./dockerfiles/telegram-send
+
+  php:
+    image: indexyz/php
+    build: ./dockerfiles/php
