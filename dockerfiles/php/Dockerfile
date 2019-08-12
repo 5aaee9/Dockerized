@@ -24,7 +24,6 @@ RUN install_packages ca-certificates curl wget gnupg && \
     cd nginx && \
     bazel build :nginx-google.deb
 FROM php:7.3-fpm
-COPY config/nginx /etc/nginx
 
 COPY --from=nginx-builder /usr/local/src/nginx/bazel-bin/nginx-google.deb .
 COPY config/entrypoint.sh /entrypoint.sh
@@ -60,7 +59,9 @@ RUN dpkg -i nginx-google.deb && \
     mkdir -p /app/public && \
     chmod +x /entrypoint.sh
 
+COPY config/nginx /etc/nginx
 COPY config/supervisord.conf /etc/supervisord.conf
 COPY config/supervisor /etc/supervisor
+
 WORKDIR /app
 ENTRYPOINT [ "/entrypoint.sh" ]
