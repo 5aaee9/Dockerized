@@ -58,9 +58,9 @@ RUN dpkg -i nginx-google.deb && \
     apt-get remove --purge && \
     rm -rf /var/lib/{apt,dpkg,cache,log}/ && \
     mkdir -p /app/public && \
-    chmod +x entrypoint.sh
+    chmod +x /entrypoint.sh
 
 COPY config/supervisord.conf /etc/supervisord.conf
 COPY config/supervisor /etc/supervisor
 WORKDIR /app
-
+ENTRYPOINT [ "/entrypoint.sh" ]
