@@ -26,7 +26,7 @@ RUN install_packages ca-certificates curl wget gnupg && \
 FROM php:7.3-fpm
 COPY config/nginx /etc/nginx
 
-COPY --from=nginx /usr/local/src/nginx/bazel-bin/nginx-google.deb .
+COPY --from=nginx-builder /usr/local/src/nginx/bazel-bin/nginx-google.deb .
 COPY config/entrypoint.sh /entrypoint.sh
 RUN dpkg -i nginx-google.deb && \
     rm -f nginx-google.deb && \
