@@ -16,6 +16,7 @@ RUN install_packages ca-certificates curl wget gnupg && \
         libssl-dev \
         git \
         software-properties-common \
+        bash-completion \
         openjdk-8-jdk && \
     dpkg -i bazel_0.23.2-linux-x86_64.deb && \
     cd /usr/local/src && \
