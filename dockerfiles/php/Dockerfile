@@ -45,6 +45,6 @@ RUN dpkg -i nginx-google.deb && \
     chmod +x entrypoint.sh
 
 COPY config/supervisord.conf /etc/supervisord.conf
-COPY config/supervisor supervisor
+COPY config/supervisor /etc/supervisor
 WORKDIR /app
 
