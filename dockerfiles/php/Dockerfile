@@ -38,7 +38,7 @@ RUN dpkg -i nginx-google.deb && \
         libpng-dev \
         libjpeg62-turbo-dev \
         libfreetype6-dev \
-        cronie \
+        cron \
         git \
         supervisor \
         -y && \
