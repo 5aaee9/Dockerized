@@ -28,3 +28,7 @@ services:
   wine:
     image: indexyz/wine
     build: ./dockerfiles/wine
+
+  transmission:
+    image: indexyz/transmission
+    build: ./dockerfiles/transmission
