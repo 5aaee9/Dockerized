@@ -24,3 +24,7 @@ services:
   cfssl:
     image: indexyz/cfssl
     build: ./dockerfiles/cfssl
+
+  wine:
+    image: indexyz/wine
+    build: ./dockerfiles/wine
