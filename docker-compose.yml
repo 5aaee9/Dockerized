@@ -16,3 +16,11 @@ services:
   php:
     image: indexyz/php
     build: ./dockerfiles/php
+
+  cloudflared:
+    image: indexyz/cloudflared
+    build: ./dockerfiles/cloudflared
+
+  cfssl:
+    image: indexyz/cfssl
+    build: ./dockerfiles/cfssl
