@@ -33,6 +33,6 @@ services:
     image: indexyz/transmission
     build: ./dockerfiles/transmission
 
-  deluge:
-    image: indexyz/deluge
-    build: ./dockerfiles/deluge
+  # deluge:
+  #   image: indexyz/deluge
+  #   build: ./dockerfiles/deluge
