@@ -33,6 +33,10 @@ services:
     image: indexyz/transmission
     build: ./dockerfiles/transmission
 
+  redsocks:
+    image: indexyz/redsocks
+    build: ./dockerfiles/redsocks
+
   # deluge:
   #   image: indexyz/deluge
   #   build: ./dockerfiles/deluge
