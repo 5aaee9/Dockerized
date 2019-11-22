@@ -1,6 +1,10 @@
 version: '3'
 
 services:
+  overture:
+    image: indexyz/overtrue
+    build: ./dockerfiles/overtrue
+
   mumble:
     image: indexyz/mumble
     build: ./dockerfiles/mumble
@@ -12,10 +16,6 @@ services:
   telegram-send:
     image: indexyz/telegram-send
     build: ./dockerfiles/telegram-send
-
-  php:
-    image: indexyz/php
-    build: ./dockerfiles/php
 
   cloudflared:
     image: indexyz/cloudflared
@@ -36,6 +36,10 @@ services:
   redsocks:
     image: indexyz/redsocks
     build: ./dockerfiles/redsocks
+
+  php:
+    image: indexyz/php
+    build: ./dockerfiles/php
 
   # deluge:
   #   image: indexyz/deluge
