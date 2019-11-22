@@ -2,8 +2,8 @@ version: '3'
 
 services:
   overture:
-    image: indexyz/overtrue
-    build: ./dockerfiles/overtrue
+    image: indexyz/overture
+    build: ./dockerfiles/overture
 
   mumble:
     image: indexyz/mumble
