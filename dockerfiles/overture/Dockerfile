@@ -11,4 +11,4 @@ FROM alpine
 COPY --from=builder /temp/overture-linux-amd64 /usr/bin/overture
 
 ENTRYPOINT [ "/usr/bin/overture" ]
-CMD [ "-c /data/config.json" ]
+CMD [ "-c", "/data/config.json" ]
