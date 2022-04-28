@@ -23,7 +23,7 @@ RUN install_packages ca-certificates curl wget gnupg && \
     git clone https://nginx.googlesource.com/nginx && \
     cd nginx && \
     bazel build :nginx-google.deb
-FROM php:7.3-fpm
+FROM php:8-fpm-bullseye
 
 COPY --from=nginx-builder /usr/local/src/nginx/bazel-bin/nginx-google.deb .
 COPY config/entrypoint.sh /entrypoint.sh
