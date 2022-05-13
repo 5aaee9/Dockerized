@@ -1,46 +1,6 @@
 version: '3'
 
 services:
-  overture:
-    image: indexyz/overture
-    build: ./dockerfiles/overture
-
-  mumble:
-    image: indexyz/mumble
-    build: ./dockerfiles/mumble
-
-  ossutils:
-    image: indexyz/ossutils
-    build: ./dockerfiles/ossutils
-
-  telegram-send:
-    image: indexyz/telegram-send
-    build: ./dockerfiles/telegram-send
-
-  cloudflared:
-    image: indexyz/cloudflared
-    build: ./dockerfiles/cloudflared
-
-  cfssl:
-    image: indexyz/cfssl
-    build: ./dockerfiles/cfssl
-
-  wine:
-    image: indexyz/wine
-    build: ./dockerfiles/wine
-
-  transmission:
-    image: indexyz/transmission
-    build: ./dockerfiles/transmission
-
-  redsocks:
-    image: indexyz/redsocks
-    build: ./dockerfiles/redsocks
-
   php:
     image: indexyz/php
     build: ./dockerfiles/php
-
-  # deluge:
-  #   image: indexyz/deluge
-  #   build: ./dockerfiles/deluge

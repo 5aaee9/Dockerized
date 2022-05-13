@@ -1,5 +1,5 @@
 FROM bitnami/minideb:stretch as nginx-builder
-RUN install_packages ca-certificates curl wget gnupg && \
+RUN install_packages ca-certificates apt-transport-https curl wget gnupg && \
     curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor > bazel.gpg && \
     mv bazel.gpg /etc/apt/trusted.gpg.d/ && \
     echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list && \
@@ -19,11 +19,14 @@ RUN install_packages ca-certificates curl wget gnupg && \
         git \
         software-properties-common \
         bash-completion \
+        bazel \
         bazel-4.0.0 \
         openjdk-8-jdk && \
     cd /usr/local/src && \
     git clone https://nginx.googlesource.com/nginx && \
     cd nginx && \
+    sed -i 's/zlib-1.2.11/zlib-1.2.12/g' bazel/repositories.bzl && \
+    sed -i 's/c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1/91844808532e5ce316b3c010929493c0244f3d37593afd6de04f71821d5136d9/g' bazel/repositories.bzl && \
     bazel build :nginx-google.deb
 FROM php:8-fpm-bullseye
 
@@ -42,6 +45,7 @@ RUN dpkg -i nginx-google.deb && \
         cron \
         git \
         supervisor \
+        libonig-dev \
         -y && \
     docker-php-ext-install \
         pdo \
@@ -53,7 +57,6 @@ RUN dpkg -i nginx-google.deb && \
         mysqli \
         gd \
         opcache && \
-    docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
     apt clean autoclean -y && \
     apt autoremove -y && \
     apt-get remove --purge && \
