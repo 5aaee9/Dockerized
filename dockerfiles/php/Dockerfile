@@ -1,6 +1,8 @@
 FROM bitnami/minideb:stretch as nginx-builder
 RUN install_packages ca-certificates curl wget gnupg && \
-    wget https://github.com/bazelbuild/bazel/releases/download/0.23.2/bazel_0.23.2-linux-x86_64.deb && \
+    curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor > bazel.gpg && \
+    mv bazel.gpg /etc/apt/trusted.gpg.d/ && \
+    echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list && \
     install_packages \
         pkg-config \
         zip \
@@ -17,8 +19,8 @@ RUN install_packages ca-certificates curl wget gnupg && \
         git \
         software-properties-common \
         bash-completion \
+        bazel-4.0.0 \
         openjdk-8-jdk && \
-    dpkg -i bazel_0.23.2-linux-x86_64.deb && \
     cd /usr/local/src && \
     git clone https://nginx.googlesource.com/nginx && \
     cd nginx && \
